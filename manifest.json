@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "MarmoUI 2.0",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Enhances the Marmoset UI with theme switching and improved usability for UW CS 2025.",
   "content_scripts": [
     {
