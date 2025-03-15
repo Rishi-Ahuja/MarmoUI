@@ -42,22 +42,31 @@
         --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
         --button-bg-light: #6ab0bc;
         --button-hover-light: #3a8290;
+        --button-text-hover-light: #ffffff;
         --row-bg-light: var(--background-light);
         --row-hover-light: color-mix(in srgb, var(--background-light) 90%, #ffffff);
+        --row-selected-light: #e0e7ff;
   
-        /* Dark Theme (Inspired by VS Code) */
+        /* Dark Theme (VS Code Dark+) */
         --primary-dark: #569cd6;
         --secondary-dark: #4ec9b0;
-        --accent-dark: rgb(218, 26, 176);
+        --accent-dark: #ce9178;
         --background-dark: #1e1e1e;
-        --text-dark: rgb(13, 156, 156);
-        --success-dark: rgba(61, 135, 82, 0.47);
-        --error-dark: rgba(160, 56, 56, 0.58);
+        --text-dark: #d4d4d4;
+        --success-dark: rgba(115, 201, 144, 0.2);
+        --error-dark: rgba(240, 71, 71, 0.2);
         --shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.5);
-        --button-bg-dark: rgb(47, 11, 106);
-        --button-hover-dark: rgb(51, 43, 91);
-        --row-bg-dark: #2e2e2e;
-        --row-hover-dark: color-mix(in srgb, var(--background-dark) 80%, #4e4e4e);
+        --button-bg-dark: #2d2d2d;
+        --button-hover-dark: #3d3d3d;
+        --row-bg-dark: #252526;
+        --row-hover-dark: #2a2d2e;
+        --row-alt-bg-dark: #1f1f1f;
+        --link-dark: #4ec9b0;
+        --header-text-dark: #569cd6;
+        --due-date-dark: #dcdcaa;
+        --no-submission-dark: #9cdcfe;
+        --table-header-bg-dark: #252526;
+        --table-border-dark: #404040;
   
         /* Vintage Theme (Old MarmoUI Colors) */
         --primary-vintage: #2c6b94;
@@ -70,8 +79,10 @@
         --shadow-vintage: 0 4px 12px rgba(0, 0, 0, 0.1);
         --button-bg-vintage: #ffcc33;
         --button-hover-vintage: #eeeeee;
+        --button-text-hover-vintage: #000000;
         --row-bg-vintage: color-mix(in srgb, var(--secondary-vintage) 90%, #ffffff);
         --row-hover-vintage: var(--button-hover-vintage);
+        --row-selected-vintage: #2c5b84;
   
         /* Default to Light Theme */
         --primary: var(--primary-light);
@@ -120,7 +131,79 @@
         --row-hover: var(--row-hover-dark);
       }
   
-      /* Vintage Theme */
+      body.dark .mui-header p {
+        color: var(--header-text-dark);
+        text-shadow: 0 0 10px rgba(86, 156, 214, 0.4);
+      }
+  
+      body.dark td a {
+        color: var(--link-dark);
+      }
+  
+      body.dark .due-date,
+      body.dark .due-in:not(.urgent) {
+        color: var(--due-date-dark);
+      }
+  
+      body.dark td:contains('No submission') {
+        color: var(--no-submission-dark);
+      }
+  
+      body.dark th {
+        background: var(--table-header-bg-dark);
+        color: var(--text-dark);
+        border-bottom: 1px solid var(--table-border-dark);
+        font-weight: 600;
+      }
+  
+      body.dark th:hover {
+        background: var(--button-hover-dark);
+      }
+  
+      body.dark table {
+        border: 1px solid var(--table-border-dark);
+        background: var(--row-bg-dark);
+      }
+  
+      body.dark tr {
+        border-bottom: 1px solid var(--table-border-dark);
+        background: var(--row-bg-dark);
+      }
+  
+      body.dark tr:nth-child(even) {
+        background: var(--row-alt-bg-dark);
+      }
+  
+      body.dark tr:hover {
+        background: var(--row-hover-dark);
+      }
+  
+      body.dark td {
+        color: var(--text-dark);
+      }
+  
+      body.dark .passed {
+        color: #89d185;
+        background: var(--success-dark);
+      }
+  
+      body.dark .failed {
+        color: #f14c4c;
+        background: var(--error-dark);
+      }
+  
+      body.dark td a {
+        color: var(--link-dark);
+      }
+  
+      body.dark td[class*="lab"] {
+        color: var(--link-dark);
+      }
+  
+      body.dark td[class*="lab"] a {
+        color: var(--link-dark);
+      }
+  
       body.vintage {
         --primary: var(--primary-vintage);
         --secondary: var(--secondary-vintage);
@@ -312,8 +395,23 @@
       }
   
       tr.selected {
+        background: var(--row-selected-light);
+      }
+  
+      body.dark tr.selected {
         background: var(--accent);
-        color: var(--text);
+      }
+  
+      body.vintage tr.selected {
+        background: var(--row-selected-vintage);
+        color: #ffffff;
+      }
+  
+      body.vintage tr.selected td,
+      body.vintage tr.selected td a,
+      body.vintage tr.selected td[class*="lab"],
+      body.vintage tr.selected td[class*="lab"] a {
+        color: #ffffff;
       }
   
       td.passed {
@@ -346,20 +444,24 @@
         text-decoration: none;
         display: inline-block;
         cursor: pointer;
-        transition: transform 0.2s ease, background 0.3s ease, border-radius 0.3s ease, box-shadow 0.3s ease;
+        transition: all 0.2s ease;
         font-size: 1rem;
         font-weight: bold;
         border: none;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         width: auto;
         text-align: center;
       }
   
       .mui-button:hover {
         background: var(--button-hover);
-        transform: scale(1.05);
-        border-radius: 6px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+  
+      body.light .mui-button:hover {
+        color: var(--button-text-hover-light);
+      }
+  
+      body.vintage .mui-button:hover {
+        color: var(--button-text-hover-vintage);
       }
   
       .mui-popup {
@@ -890,7 +992,7 @@
   
     function calculateDueIn(dueDateText) {
       try {
-        const now = new Date('2025-03-08T12:00:00-05:00'); // Updated to current date
+        const now = new Date(); // Use current date and time
         if (!dueDateText || typeof dueDateText !== 'string' || !dueDateText.trim()) {
           return { text: '', isUrgent: false, daysRemaining: 0 };
         }
@@ -1208,7 +1310,7 @@
             const tokenTimes = html.match(/<li>[a-zA-Z0-9 ,:]+<br>/g) || [];
             const nextTokenTime = tokenTimes[tokenTimes.length - 1]?.replace('<br>', '');
             if (nextTokenTime) {
-              const nextToken = parseMarmosetDate(nextTokenTime) - new Date('2025-03-08T12:00:00-05:00'); // Updated to current date
+              const nextToken = parseMarmosetDate(nextTokenTime) - new Date(); // Use current date and time
               if (nextToken > 0) {
                 tokenText += ` (renew in ${Math.floor(nextToken / 3600000)}h ${Math.floor((nextToken % 3600000) / 60000)}m)`;
               }
