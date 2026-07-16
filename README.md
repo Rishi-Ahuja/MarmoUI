@@ -46,20 +46,6 @@ No build step — the manifest loads plain files in dependency order. Each scrip
 | `legacy/legacy.js` | Legacy-mode pipeline: OG look on the fixed engine |
 | `src/main.js` | Bootstrap + mode dispatch |
 
-`fixtures/` and `tests/` support development only; the extension never loads them.
-
-## Development
-
-**Unit tests** (date parsing, year inference, DST):
-
-```sh
-node --test tests/
-```
-
-**Browser smoke tests**: serve the repo root with any static server (e.g. `python3 -m http.server`) and open the pages under `fixtures/` — they load the real stylesheet and modules against Marmoset-shaped sample DOM.
-
-**Syntax check**: `for f in src/*.js; do node --check "$f"; done`
-
 ## License
 
 [MIT](LICENSE) © Rishi Ahuja
