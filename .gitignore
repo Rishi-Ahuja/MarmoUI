@@ -1,0 +1,8 @@
+# OS
+.DS_Store
+
+# Dependencies (none required, but just in case)
+node_modules/
+
+# Packaged extension builds
+*.zip

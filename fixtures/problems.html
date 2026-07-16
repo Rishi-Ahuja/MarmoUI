@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CS 246: Assignments</title>
+  <link rel="stylesheet" href="../styles.css" data-mui>
+  <script>globalThis.__MUI_PAGE_OVERRIDE__ = 'PROBLEMS';</script>
+  <script src="../src/early-theme.js"></script>
+</head>
+<body>
+  <div class="header"><h1>Marmoset legacy header (should be removed)</h1></div>
+  <div class="breadcrumb">
+    <div class="logout">
+      <p><a href="/authenticate/Logout">Logout</a></p>
+    </div>
+    <p>j2doe:
+      <a href="view/course.jsp?coursePK=10" title="overview of CS 246">CS 246</a>
+    </p>
+  </div>
+
+  <h1>CS 246 Spring 2026</h1>
+  <h2>Assignments</h2>
+
+  <table>
+    <tr>
+      <th>Project</th>
+      <th>Submissions</th>
+      <th>Web submission</th>
+      <th>Due date</th>
+    </tr>
+    <tr>
+      <td><a href="view/project.jsp?projectPK=7">A5: Graph's &amp; "Trees"</a></td>
+      <td><a href="view/project.jsp?projectPK=7">view</a></td>
+      <td><a href="view/submitProject.jsp?projectPK=7">submit</a></td>
+      <td data-due-offset-hours="3"></td>
+    </tr>
+    <tr>
+      <td><a href="view/empty-project.jsp?projectPK=8">A6: Big Assignment</a></td>
+      <td><a href="view/empty-project.jsp?projectPK=8">view</a></td>
+      <td><a href="view/submitProject.jsp?projectPK=8">submit</a></td>
+      <td data-due-offset-hours="72"></td>
+    </tr>
+    <tr>
+      <td><a href="view/pending-project.jsp?projectPK=9">A4: Recursion</a></td>
+      <td><a href="view/pending-project.jsp?projectPK=9">view</a></td>
+      <td><a href="view/submitProject.jsp?projectPK=9">submit</a></td>
+      <td data-due-offset-hours="-30"></td>
+    </tr>
+  </table>
+
+  <div class="footer">old footer text</div>
+
+  <!-- Fixture helper: stamp due-date cells relative to the real "now" so
+       urgent / normal / past states are all exercised. -->
+  <script>
+    for (const td of document.querySelectorAll('td[data-due-offset-hours]')) {
+      const due = new Date(Date.now() + Number(td.dataset.dueOffsetHours) * 3600000);
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      let hours = due.getHours();
+      const meridiem = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      td.textContent = `${String(due.getDate()).padStart(2, '0')} ${months[due.getMonth()]}, ` +
+        `${hours}:${String(due.getMinutes()).padStart(2, '0')} ${meridiem}`;
+    }
+  </script>
+
+  <script src="../src/constants.js"></script>
+  <script src="../src/utils.js"></script>
+  <script src="../src/mode.js"></script>
+  <script src="../src/dates.js"></script>
+  <script src="../src/theme.js"></script>
+  <script src="../src/tables.js"></script>
+  <script src="../src/palette.js"></script>
+  <script src="../src/submit.js"></script>
+  <script src="../src/loaders.js"></script>
+  <script src="../src/problems.js"></script>
+  <script src="../src/pages.js"></script>
+  <script src="../legacy/legacy-css.js"></script>
+  <script src="../legacy/legacy.js"></script>
+  <script src="../src/main.js"></script>
+</body>
+</html>
