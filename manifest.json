@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "MarmoUI",
   "version": "2.1.0",
-  "description": "A modern skin for UW's Marmoset submission server: themes, live countdowns, inline scores and tokens, a command palette, and a streamlined submit flow.",
+  "description": "A modern skin for UW's Marmoset submission server: themes, live deadline countdowns, inline scores and tokens, easy submissions.",
   "homepage_url": "https://github.com/Rishi-Ahuja/MarmoUI",
   "minimum_chrome_version": "111",
   "icons": {
@@ -12,13 +12,21 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://marmoset.student.cs.uwaterloo.ca/*"],
-      "css": ["styles.css"],
-      "js": ["src/early-theme.js"],
+      "matches": [
+        "https://marmoset.student.cs.uwaterloo.ca/*"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "js": [
+        "src/early-theme.js"
+      ],
       "run_at": "document_start"
     },
     {
-      "matches": ["https://marmoset.student.cs.uwaterloo.ca/*"],
+      "matches": [
+        "https://marmoset.student.cs.uwaterloo.ca/*"
+      ],
       "js": [
         "src/constants.js",
         "src/utils.js",
@@ -40,8 +48,12 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["fonts/*.woff2"],
-      "matches": ["https://marmoset.student.cs.uwaterloo.ca/*"]
+      "resources": [
+        "fonts/*.woff2"
+      ],
+      "matches": [
+        "https://marmoset.student.cs.uwaterloo.ca/*"
+      ]
     }
   ]
 }
